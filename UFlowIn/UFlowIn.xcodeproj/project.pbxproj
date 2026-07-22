@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		C8314A7D3010B64D005028BE /* UFlowIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = UFlowIn.app; path = "/Users/felipecolarescardoso/Documents/UFlowIn/UFlowIn/build/Debug-iphoneos/UFlowIn.app"; sourceTree = "<absolute>"; };
+		C8F398523010D4D20085632C /* UFlowIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UFlowIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				C8314A7F3010B64D005028BE /* UFlowIn */,
+				C8F398523010D4D20085632C /* UFlowIn.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = UFlowIn;
-			productReference = C8314A7D3010B64D005028BE /* UFlowIn.app */;
+			productReference = C8F398523010D4D20085632C /* UFlowIn.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
