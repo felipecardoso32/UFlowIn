@@ -38,12 +38,12 @@ struct GoalsView: View {
     }
 
 
-    // MARK: - Estado
+    // Estado
 
     @State private var selected: Set<String> = []
 
 
-    // MARK: - Objetivos
+    //  Objetivos
 
     let goals: [Goal] = [
 
@@ -81,7 +81,7 @@ struct GoalsView: View {
     ]
 
 
-    // MARK: - Body
+    // Body
 
     var body: some View {
 
@@ -96,67 +96,52 @@ struct GoalsView: View {
                 spacing: 20
             ) {
 
-                // MARK: - Título
-
                 Text("Objetivos")
-                    .font(.largeTitle.bold())
+                    .font(.title.bold())
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.colorsIndigo)
 
+                Text("Qual é o seu objetivo?")
+                    .font(.default.bold())
+                    .foregroundStyle(.labelsBlack)
+                    .multilineTextAlignment(.center)
 
-                // MARK: - Subtítulo
+                Text("Escolha o que mais combina com a sua jornada! Você poderá alterar isso quando quiser.")
+                    .font(Font.custom("SF Pro", size: 15))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.labelsVibrant2)
 
-                Text(
-                    "O que você deseja alcançar?"
-                )
-                .foregroundStyle(.secondary)
+                Text("Pode escolher mais de um 😉")
+                    .font(Font.custom("SF Pro", size: 15))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.labelsBlack)
 
-
-                // MARK: - Cards
-
-                ScrollView {
-
-                    VStack(spacing: 12) {
-
-                        ForEach(goals) { goal in
-
-                            SelectionCard(
-
-                                title: goal.title,
-
-                                subtitle: nil,
-
-                                visual: convertVisual(
-                                    goal.visual
-                                ),
-
-                                style: .icon,
-
-                                isSelected:
-                                    selected.contains(
-                                        goal.title
-                                    )
-
-                            ) {
-
-                                toggleSelection(
-                                    goal.title
-                                )
-                            }
+                VStack(spacing: 10) {
+                    ForEach(goals) { goal in
+                        SelectionCard(
+                            title: goal.title,
+                            subtitle: nil,
+                            visual: convertVisual(goal.visual),
+                            style: .icon,
+                            isSelected: selected.contains(goal.title),
+                            size: .small
+                        ) {
+                            toggleSelection(goal.title)
                         }
                     }
                 }
 
-
-                // MARK: - Botão continuar
+                Spacer()
 
                 PrimaryButton(
                     title: "Continuar",
                     style: .tertiary
                 ) {
-
                     onContinue()
                 }
+                .padding(.bottom, 20)
             }
-            .padding(24)
+            .padding(.horizontal, 16)
         }
     }
 

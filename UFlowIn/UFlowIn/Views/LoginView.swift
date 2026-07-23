@@ -43,7 +43,7 @@ struct LoginView: View {
                     
                     
                     Rectangle()
-                        .frame(width: 360, height: 500, alignment: .center)
+                        .frame(width: 370, height: 500, alignment: .center)
                         .cornerRadius(16)
                         .foregroundStyle(.grayElement.opacity(0.7))
                         .shadow(color: .black.opacity(0.16), radius: 20, x: 0, y: 8)
@@ -207,7 +207,7 @@ struct LoginView: View {
                             .padding(.vertical, 10)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                         }
-                        .padding(24)
+                        .padding(20)
                     
                     
                 }.padding(.top, 140)

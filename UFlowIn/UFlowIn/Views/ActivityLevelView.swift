@@ -46,68 +46,90 @@ struct ActivityLevelView: View {
         ActivityLevel(
             title: "Pouco ativo",
             subtitle: "Atividade física leve",
-            visual: .icon("figure.walk")
+            visual: .image("pose1")
         ),
 
         ActivityLevel(
             title: "Ativo",
             subtitle: "Exercícios regularmente",
-            visual: .icon("figure.run")
+            visual: .image("pose2")
         ),
 
         ActivityLevel(
             title: "Muito ativo",
             subtitle: "Exercícios intensos frequentemente",
-            visual: .icon(
-                "figure.strengthtraining.traditional"
-            )
+            visual: .image("pose8")
         ),
 
         ActivityLevel(
             title: "Extremamente ativo",
             subtitle: "Treinos intensos diariamente",
-            visual: .icon(
-                "figure.highintensity.intervaltraining"
-            )
+            visual: .image("pose5")
         )
     ]
 
 
     var body: some View {
 
-        VStack {
+        ZStack {
+            
+            Color(.grayBackground)
+                .ignoresSafeArea()
+            
+            
+            VStack(
+                alignment: .center,
+                spacing: 10
+            ) {
+                
+                Text("Nível de Atividade")
+                    .font(.title.bold())
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.colorsIndigo)
+                    .padding(.top, -20)
 
-            ScrollView {
+                Text("Como é sua rotina hoje?")
+                    .font(.default.bold())
+                    .foregroundStyle(.labelsBlack)
+                    .multilineTextAlignment(.center)
 
-                VStack(spacing: 12) {
+                Text("Isso nos ajuda a recomendar metas e atividades adequadas para você.")
+                    .font(Font.custom("SF Pro", size: 15))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.labelsVibrant2)
+                    
+               
 
-                    ForEach(levels) { level in
+                ForEach(levels) { level in
 
-                        SelectionCard(
-
-                            title: level.title,
-
-                            subtitle: level.subtitle,
-
-                            visual: convertVisual(
-                                level.visual
-                            ),
-
-                            style: .icon,
-
-                            isSelected:
-                                selected == level.title
-
-                        ) {
-
-                            selected = level.title
-                        }
+                    SelectionCard(
+                        title: level.title,
+                        subtitle: level.subtitle,
+                        visual: convertVisual(level.visual),
+                        style: .default,
+                        isSelected: selected == level.title,
+                        size: .big
+                    ) {
+                        selected = level.title
                     }
                 }
-            }
-        }
-    }
 
+                Spacer()
+
+                PrimaryButton(
+                    title: "Continuar",
+                    style: .tertiary
+                ) {
+                    onContinue()
+                }
+                .padding(.bottom, 20)
+            }.padding(.top, 120)
+            .padding(.horizontal, 16)
+            
+        }
+        
+    }
+   
 
     private func convertVisual(
         _ visual: ActVisual
@@ -124,6 +146,8 @@ struct ActivityLevelView: View {
             return .image(name)
         }
     }
+    
+    
 }
 
 

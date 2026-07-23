@@ -82,50 +82,50 @@ struct AboutYouView: View {
                                 }.padding(.top, -65)
                                 HStack{
                                     /*Text("Selecione")
-                                        .font(
-                                            Font.custom("SF Pro", size: 22)
-                                                .weight(.heavy)
-                                        )
-                                        .foregroundColor(.labelsBlack)
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                                    Image(systemName: "chevron.down")
-                                        .font(.system(size: 22, weight: .semibold))
-                                        .foregroundStyle(.labelsBlack)*/
+                                     .font(
+                                     Font.custom("SF Pro", size: 22)
+                                     .weight(.heavy)
+                                     )
+                                     .foregroundColor(.labelsBlack)
+                                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                     Image(systemName: "chevron.down")
+                                     .font(.system(size: 22, weight: .semibold))
+                                     .foregroundStyle(.labelsBlack)*/
                                     Menu {
-                                    
-                                    ForEach(
-                                    genders,
-                                    id: \.self
-                                    ) { item in
-                                    
-                                    Button(item) {
-                                    
-                                    gender = item
-                                    }
-                                    }
-                                    
+                                        
+                                        ForEach(
+                                            genders,
+                                            id: \.self
+                                        ) { item in
+                                            
+                                            Button(item) {
+                                                
+                                                gender = item
+                                            }
+                                        }
+                                        
                                     } label: {
-                                    
-                                    HStack {
-                                    
-                                    Text(gender)
-                                    
-                                    Spacer()
-                                    
-                                    Image(
-                                    systemName:
-                                    "chevron.down"
-                                    )
-                                    }
-                                    .padding()
-                                    .background(
-                                    .labelsVibrant3.opacity(0.08)
-                                    )
-                                    .clipShape(
-                                    RoundedRectangle(
-                                    cornerRadius: 20
-                                    )
-                                    ).frame(height: 40)
+                                        
+                                        HStack {
+                                            
+                                            Text(gender)
+                                            
+                                            Spacer()
+                                            
+                                            Image(
+                                                systemName:
+                                                    "chevron.down"
+                                            )
+                                        }
+                                        .padding()
+                                        .background(
+                                            .labelsVibrant3.opacity(0.08)
+                                        )
+                                        .clipShape(
+                                            RoundedRectangle(
+                                                cornerRadius: 20
+                                            )
+                                        ).frame(height: 40)
                                     }
                                 }.padding(.top, -50)
                                 
@@ -155,7 +155,7 @@ struct AboutYouView: View {
                                 }.padding(.top, -5)
                                 
                                 HStack(spacing: 0) {
-
+                                    
                                     CustomTextField(
                                         title: "Ex.:70,5",
                                         text: $peso,
@@ -163,51 +163,51 @@ struct AboutYouView: View {
                                         width: 100
                                     )
                                     ZStack{
-                                    UnevenRoundedRectangle(
-                                        topLeadingRadius: 0,
-                                        bottomLeadingRadius: 0,
-                                        bottomTrailingRadius: 16,
-                                        topTrailingRadius: 16
-                                    )
-                                    .fill(.labelsVibrant4)
-                                    .frame(
-                                        width: 50,
-                                        height: 46
-                                    )
-                                    .offset(x: -20, y: -7)
-                                    .padding(.top, 15)
-                                  
+                                        UnevenRoundedRectangle(
+                                            topLeadingRadius: 0,
+                                            bottomLeadingRadius: 0,
+                                            bottomTrailingRadius: 16,
+                                            topTrailingRadius: 16
+                                        )
+                                        .fill(.labelsVibrant4)
+                                        .frame(
+                                            width: 50,
+                                            height: 46
+                                        )
+                                        .offset(x: -20, y: -7)
+                                        .padding(.top, 15)
+                                        
                                         Text("kg")
                                             .font(Font.custom("SF Pro", size: 17).bold())
                                             .padding(.leading, -30)
-                                            
+                                        
                                     }
                                 }
                                 .frame(width: 150)
                                 .padding(.leading, 7)
                                 
-                               /* HStack{
-                                    CustomTextField(
-                                        title: "exemplo@email.com",
-                                        text: $peso,
-                                        keyboardType: .emailAddress,
-                                        width: 100
-                                        
-                                        
-                                    ).padding(.leading, 35)
-                                    UnevenRoundedRectangle(
-                                        topLeadingRadius: 0,
-                                        bottomLeadingRadius: 0,
-                                        bottomTrailingRadius: 20,
-                                        topTrailingRadius: 20
-                                    )
-                                    .fill(.labelsVibrant4)
-                                    .frame(
-                                        width: 50,
-                                        height: 44
-                                    )
-                                }.padding(.leading, -40)*///offset(x: 20).padding(.top, -40)
-                                    //.padding(.leading, -40)
+                                /* HStack{
+                                 CustomTextField(
+                                 title: "exemplo@email.com",
+                                 text: $peso,
+                                 keyboardType: .emailAddress,
+                                 width: 100
+                                 
+                                 
+                                 ).padding(.leading, 35)
+                                 UnevenRoundedRectangle(
+                                 topLeadingRadius: 0,
+                                 bottomLeadingRadius: 0,
+                                 bottomTrailingRadius: 20,
+                                 topTrailingRadius: 20
+                                 )
+                                 .fill(.labelsVibrant4)
+                                 .frame(
+                                 width: 50,
+                                 height: 44
+                                 )
+                                 }.padding(.leading, -40)*///offset(x: 20).padding(.top, -40)
+                                //.padding(.leading, -40)
                                 
                             }
                             
@@ -240,7 +240,7 @@ struct AboutYouView: View {
                                 }.padding(.top, -5)
                                 
                                 HStack(spacing: 0) {
-
+                                    
                                     CustomTextField(
                                         title: "Ex.:25",
                                         text: $peso,
@@ -248,54 +248,54 @@ struct AboutYouView: View {
                                         width: 100
                                     )
                                     ZStack{
-                                    UnevenRoundedRectangle(
-                                        topLeadingRadius: 0,
-                                        bottomLeadingRadius: 0,
-                                        bottomTrailingRadius: 16,
-                                        topTrailingRadius: 16
-                                    )
-                                    .fill(.labelsVibrant4)
-                                    .frame(
-                                        width: 50,
-                                        height: 46
-                                    )
-                                    .offset(x: -20, y: -7)
-                                    .padding(.top, 15)
-                                  
+                                        UnevenRoundedRectangle(
+                                            topLeadingRadius: 0,
+                                            bottomLeadingRadius: 0,
+                                            bottomTrailingRadius: 16,
+                                            topTrailingRadius: 16
+                                        )
+                                        .fill(.labelsVibrant4)
+                                        .frame(
+                                            width: 50,
+                                            height: 46
+                                        )
+                                        .offset(x: -20, y: -7)
+                                        .padding(.top, 15)
+                                        
                                         Text("anos")
                                             .font(Font.custom("SF Pro", size: 17).bold())
                                             .padding(.leading, -39)
-                                            
+                                        
                                     }
                                 }
                                 .frame(width: 150)
                                 .padding(.leading, 7)
                                 
-                               /* HStack{
-                                    CustomTextField(
-                                        title: "exemplo@email.com",
-                                        text: $peso,
-                                        keyboardType: .emailAddress,
-                                        width: 100
-                                        
-                                        
-                                    ).padding(.leading, 35)
-                                    UnevenRoundedRectangle(
-                                        topLeadingRadius: 0,
-                                        bottomLeadingRadius: 0,
-                                        bottomTrailingRadius: 20,
-                                        topTrailingRadius: 20
-                                    )
-                                    .fill(.labelsVibrant4)
-                                    .frame(
-                                        width: 50,
-                                        height: 44
-                                    )
-                                }.padding(.leading, -40)*///offset(x: 20).padding(.top, -40)
-                                    //.padding(.leading, -40)
+                                /* HStack{
+                                 CustomTextField(
+                                 title: "exemplo@email.com",
+                                 text: $peso,
+                                 keyboardType: .emailAddress,
+                                 width: 100
+                                 
+                                 
+                                 ).padding(.leading, 35)
+                                 UnevenRoundedRectangle(
+                                 topLeadingRadius: 0,
+                                 bottomLeadingRadius: 0,
+                                 bottomTrailingRadius: 20,
+                                 topTrailingRadius: 20
+                                 )
+                                 .fill(.labelsVibrant4)
+                                 .frame(
+                                 width: 50,
+                                 height: 44
+                                 )
+                                 }.padding(.leading, -40)*///offset(x: 20).padding(.top, -40)
+                                //.padding(.leading, -40)
                                 
                             }
-                           
+                            
                             
                         }
                         .padding(15)
@@ -319,7 +319,7 @@ struct AboutYouView: View {
                                 }.padding(.top, -5)
                                 
                                 HStack(spacing: 0) {
-
+                                    
                                     CustomTextField(
                                         title: "Ex.:1,75",
                                         text: $peso,
@@ -327,51 +327,51 @@ struct AboutYouView: View {
                                         width: 100
                                     )
                                     ZStack{
-                                    UnevenRoundedRectangle(
-                                        topLeadingRadius: 0,
-                                        bottomLeadingRadius: 0,
-                                        bottomTrailingRadius: 16,
-                                        topTrailingRadius: 16
-                                    )
-                                    .fill(.labelsVibrant4)
-                                    .frame(
-                                        width: 50,
-                                        height: 46
-                                    )
-                                    .offset(x: -20, y: -7)
-                                    .padding(.top, 15)
-                                  
+                                        UnevenRoundedRectangle(
+                                            topLeadingRadius: 0,
+                                            bottomLeadingRadius: 0,
+                                            bottomTrailingRadius: 16,
+                                            topTrailingRadius: 16
+                                        )
+                                        .fill(.labelsVibrant4)
+                                        .frame(
+                                            width: 50,
+                                            height: 46
+                                        )
+                                        .offset(x: -20, y: -7)
+                                        .padding(.top, 15)
+                                        
                                         Text("m")
                                             .font(Font.custom("SF Pro", size: 17).bold())
                                             .padding(.leading, -30)
-                                            
+                                        
                                     }
                                 }
                                 .frame(width: 150)
                                 .padding(.leading, 7)
                                 
-                               /* HStack{
-                                    CustomTextField(
-                                        title: "exemplo@email.com",
-                                        text: $peso,
-                                        keyboardType: .emailAddress,
-                                        width: 100
-                                        
-                                        
-                                    ).padding(.leading, 35)
-                                    UnevenRoundedRectangle(
-                                        topLeadingRadius: 0,
-                                        bottomLeadingRadius: 0,
-                                        bottomTrailingRadius: 20,
-                                        topTrailingRadius: 20
-                                    )
-                                    .fill(.labelsVibrant4)
-                                    .frame(
-                                        width: 50,
-                                        height: 44
-                                    )
-                                }.padding(.leading, -40)*///offset(x: 20).padding(.top, -40)
-                                    //.padding(.leading, -40)
+                                /* HStack{
+                                 CustomTextField(
+                                 title: "exemplo@email.com",
+                                 text: $peso,
+                                 keyboardType: .emailAddress,
+                                 width: 100
+                                 
+                                 
+                                 ).padding(.leading, 35)
+                                 UnevenRoundedRectangle(
+                                 topLeadingRadius: 0,
+                                 bottomLeadingRadius: 0,
+                                 bottomTrailingRadius: 20,
+                                 topTrailingRadius: 20
+                                 )
+                                 .fill(.labelsVibrant4)
+                                 .frame(
+                                 width: 50,
+                                 height: 44
+                                 )
+                                 }.padding(.leading, -40)*///offset(x: 20).padding(.top, -40)
+                                //.padding(.leading, -40)
                                 
                             }
                             
@@ -397,11 +397,10 @@ struct AboutYouView: View {
                     title: "Próximo",
                     style: .tertiary
                 ) {
-                    
                     onContinue()
                 }
-            }// fim do v stack
-            .padding(40)
+                .padding(.bottom, 20)
+            }
         }// fim do z stack
         
         

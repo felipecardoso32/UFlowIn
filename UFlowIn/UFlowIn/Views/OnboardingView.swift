@@ -19,99 +19,106 @@ struct OnboardingView: View {
         OnboardingPage(
             title: "Sua jornada começa aqui",
             subtitle: "Treine, acompanhe seu progresso e desenvolva hábitos saudáveis no seu ritmo.",
-            imageName: "pose3"
+            imageName: "pose3",
+            imageBackground: "Ellipse1"
         ),
 
         OnboardingPage(
             title: "Uma aplicação que evolui com você",
             subtitle: "Tenha suas atividades, metas e progresso em um só lugar.",
-            imageName: "SimbolosOnboarding2"
+            imageName: "SimbolosOnboarding2",
+            imageBackground: "Ellipse2"
         ),
 
         OnboardingPage(
             title: "Evolua todos os dias",
             subtitle: "Comece agora e transforme seus hábitos.",
-            imageName: "mascote trofeu"
+            imageName: "mascote trofeu",
+            imageBackground: "Ellipse3"
         )
     ]
 
     var body: some View {
 
-        VStack {
-
-            TabView(
-                selection: $currentPage
-            ) {
-
-                ForEach(
-                    pages.indices,
-                    id: \.self
-                ) { index in
-
-                    VStack(spacing: 30) {
-
-                        Spacer()
-
-                        Image(
-                            pages[index].imageName
-                        )
-                        .resizable()
-                        .scaledToFit()
-                        .frame(
-                            maxWidth: 200,
-                            maxHeight: 200
-                        )
-
-                        Text(
-                            pages[index].title
-                        )
-                        .font(.system(size: 28, weight: .bold, design: .rounded))
-                        .frame(width: 264, alignment: .center)
-                        .padding(.horizontal, 28)
-                        .foregroundStyle(textTitleColor)
-
-                        Text(
-                            pages[index].subtitle
-                        )
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.labelsBlack)
-                        .frame(width: 340, height: 53, alignment: .center)
-                        .padding(.horizontal, 24)
-                        
-                        
-                        Spacer()
-                    }
-                    .tag(index)
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-
-         
-
-            PrimaryButton(
-                title: textTitle,
-                style: .secondary
-            ) {
+      
+            VStack {
                 
-                if currentPage < pages.count - 1 {
-
-                    withAnimation {
-
-                        currentPage += 1
+                TabView(
+                    selection: $currentPage
+                ) {
+                    
+                    ForEach(
+                        pages.indices,
+                        id: \.self
+                    ) { index in
+                        
+                        VStack(spacing: 30) {
+                            
+                            
+                       
+                            
+                            Spacer()
+                            
+                            Image(
+                                pages[index].imageName
+                            )
+                            .resizable()
+                            .scaledToFit()
+                            .frame(
+                                maxWidth: 150,
+                                maxHeight: 150
+                            )
+                            
+                            Text(
+                                pages[index].title
+                            )
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .frame(width: 264, alignment: .center)
+                            .padding(.horizontal, 28)
+                            .foregroundStyle(textTitleColor)
+                            
+                            Text(
+                                pages[index].subtitle
+                            )
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.labelsBlack)
+                            .frame(width: 340, height: 53, alignment: .center)
+                            .padding(.horizontal, 24)
+                            
+                            
+                            Spacer()
+                        }
+                        .tag(index)
                     }
-
-                } else {
-
-                    appState.finishOnboarding()
                 }
-            
-            }
-            //.padding(10)
-            ProgressDots(
-                currentPage: currentPage,
-                totalPages: pages.count
-            )
-            .padding(20)
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                
+                
+                
+                PrimaryButton(
+                    title: textTitle,
+                    style: .secondary
+                ) {
+                    
+                    if currentPage < pages.count - 1 {
+                        
+                        withAnimation {
+                            
+                            currentPage += 1
+                        }
+                        
+                    } else {
+                        
+                        appState.finishOnboarding()
+                    }
+                    
+                }
+                //.padding(10)
+                ProgressDots(
+                    currentPage: currentPage,
+                    totalPages: pages.count
+                )
+                .padding(20)
         }
     }
     
@@ -168,6 +175,7 @@ struct OnboardingPage {
     let title: String
     let subtitle: String
     let imageName: String
+    let imageBackground: String
     
 }
 

@@ -16,62 +16,83 @@ struct ActivityFinishView: View {
         false
 
     var body: some View {
-
-        VStack(spacing: 25) {
-
-            Spacer()
-
-            Image(
-                systemName:
-                    "checkmark.circle.fill"
+      
+        ZStack {
+            
+            LinearGradient(
+                colors: [
+                    Color(red: 0.00, green: 0.75, blue: 0.70),
+                    Color(red: 0.00, green: 0.72, blue: 0.68),
+                    Color(red: 0.00, green: 0.55, blue: 0.85)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
             )
-            .font(.system(size: 80))
-            .foregroundStyle(.green)
-
-            Text("Atividade concluída!")
-                .font(.largeTitle.bold())
-
-            Text(
-                "Parabéns! Você concluiu sua atividade."
-            )
-            .multilineTextAlignment(.center)
-            .foregroundStyle(.secondary)
-
-            Spacer()
-
-            PrimaryButton(
-                title: "Continuar"
-            ) {
-
-                showLocation = true
+           
+            
+            // Conteúdo da tela
+            
+            VStack(spacing: 25) {
+                
+                Spacer()
+                
+                
+                Image(
+                    systemName:
+                        "checkmark.circle.fill"
+                )
+                .font(.system(size: 80))
+                .foregroundStyle(.green)
+                
+                Text("Atividade concluída!")
+                    .font(.largeTitle.bold())
+                
+                Text(
+                    "Parabéns! Você concluiu sua atividade."
+                )
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.secondary)
+                
+                Spacer()
+                
+                PrimaryButton(
+                    title: "Continuar",
+                    style: .tertiary
+                ) {
+                    showLocation = true
+                }
+                .padding(.bottom, 20)
             }
-        }
-        .padding(24)
-        .alert(
-            "Permitir localização?",
-            isPresented:
-                $showLocation
-        ) {
+            .padding(.horizontal, 20)
+              .alert(
+                  "Permitir localização?",
+                  isPresented:
+                      $showLocation
+              ) {
 
-            Button("Permitir") {
+                  Button("Permitir") {
 
-                dismiss()
-            }
+                      dismiss()
+                  }
 
-            Button(
-                "Agora não",
-                role: .cancel
-            ) {
+                  Button(
+                      "Agora não",
+                      role: .cancel
+                  ) {
 
-                dismiss()
-            }
+                      dismiss()
+                  }
 
-        } message: {
+              } message: {
 
-            Text(
-                "A localização é utilizada para registrar sua atividade de corrida ou caminhada."
-            )
-        }
+                  Text(
+                      "A localização é utilizada para registrar sua atividade de corrida ou caminhada."
+                  )
+              }
+
+                // Conteúdo da tela
+            }.ignoresSafeArea()
+      //
     }
 }
 #Preview{

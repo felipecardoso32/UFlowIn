@@ -103,27 +103,34 @@ struct FavoriteActivitiesView: View {
 
 
             VStack(
-                alignment: .leading,
-                spacing: 20
+                alignment: .center,
+                spacing: 10
             ) {
 
                 // MARK: - Título
 
-                Text("Atividades favoritas")
-                    .font(.largeTitle.bold())
+                Text("Nível de Atividade")
+                    .font(.title.bold())
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.colorsIndigo)
+                    .padding(.top, 40)
 
+                Text("Como é sua rotina hoje?")
+                    .font(.default.bold())
+                    .foregroundStyle(.labelsBlack)
+                    .multilineTextAlignment(.center)
 
-                // MARK: - Subtítulo
-
-                Text(
-                    "Escolha as atividades que você mais gosta."
-                )
-                .foregroundStyle(.secondary)
-
+                Text("Isso nos ajuda a recomendar metas e atividades adequadas para você.")
+                    .font(Font.custom("SF Pro", size: 15))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.labelsVibrant2)
+                Text("Pode escolher mais de um 😉")
+                    .font(Font.custom("SF Pro", size: 15))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.labelsBlack)
 
                 // MARK: - Lista de atividades
 
-                ScrollView {
 
                     VStack(spacing: 12) {
 
@@ -144,7 +151,8 @@ struct FavoriteActivitiesView: View {
                                 isSelected:
                                     selected.contains(
                                         activity.title
-                                    )
+                                    ),
+                                size: .small
 
                             ) {
 
@@ -154,20 +162,19 @@ struct FavoriteActivitiesView: View {
                             }
                         }
                     }
-                }
+                
 
-
-                // MARK: - Botão continuar
+                Spacer()
 
                 PrimaryButton(
                     title: "Continuar",
                     style: .tertiary
                 ) {
-
                     onContinue()
                 }
+                .padding(.bottom, 20)
             }
-            .padding(24)
+            .padding(.horizontal, 16)
         }
     }
 

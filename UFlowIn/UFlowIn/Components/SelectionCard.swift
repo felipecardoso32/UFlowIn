@@ -1,8 +1,3 @@
-//
-//  SelectionCard.swift
-//  UFlowIn
-//
-
 import SwiftUI
 
 struct SelectionCard: View {
@@ -10,36 +5,38 @@ struct SelectionCard: View {
     // MARK: - Tipo de visual
 
     enum Visual {
-
-        // SF Symbol
         case icon(String)
-
-        // Imagem do Assets.xcassets
         case image(String)
-
-        // Sem visual
         case none
     }
 
+    // MARK: - Tamanho do Card
+
+    enum CardSize {
+        case small
+        case big
+
+        var height: CGFloat {
+            switch self {
+            case .small:
+                return 60
+            case .big:
+                return 80
+            }
+        }
+    }
 
     // MARK: - Estilo do card
 
     enum Style {
-
-        // Checkmark dentro de círculo
         case `default`
-
-        // Checkmark sem círculo
         case icon
     }
-
 
     // MARK: - Propriedades
 
     let title: String
-
     let subtitle: String?
-
     let visual: Visual
 
     var style: Style = .default
@@ -47,6 +44,9 @@ struct SelectionCard: View {
     let isSelected: Bool
 
     var action: () -> Void
+
+    // Tamanho padrão
+    var size: CardSize = .small
 
 
     // MARK: - Body
@@ -59,7 +59,7 @@ struct SelectionCard: View {
 
         } label: {
 
-            HStack(spacing: 12) {
+            HStack(spacing: 10) {
 
                 // MARK: - Visual
 
@@ -75,13 +75,13 @@ struct SelectionCard: View {
 
                     Text(title)
                         .font(.headline)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(.labelsBlack)
 
                     if let subtitle {
 
                         Text(subtitle)
                             .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(.labelsVibrant2)
                     }
                 }
 
@@ -93,9 +93,11 @@ struct SelectionCard: View {
 
                 checkmarkView
             }
-            .padding()
+            .padding(.horizontal, 16)
             .frame(
-                maxWidth: .infinity
+                maxWidth: .infinity,
+                minHeight: size.height,
+                maxHeight: size.height
             )
             .background(
 
@@ -115,8 +117,8 @@ struct SelectionCard: View {
                 )
                 .stroke(
                     isSelected
-                    ? Color.blue
-                    : Color.gray.opacity(0.2),
+                    ? .accentsBlueApp
+                    : .labelsVibrant4.opacity(0.2),
                     lineWidth:
                         isSelected
                         ? 2
@@ -125,7 +127,6 @@ struct SelectionCard: View {
             }
         }
     }
-
 
     // MARK: - Visual
 
@@ -136,20 +137,14 @@ struct SelectionCard: View {
 
         case .icon(let name):
 
-            Image(
-                systemName: name
-            )
-            .font(
-                .system(
-                    size: 24,
-                    weight: .medium
+            Image(systemName: name)
+                .font(
+                    .system(
+                        size: 24,
+                        weight: .medium
+                    )
                 )
-            )
-            .foregroundStyle(
-                isSelected
-                ? .accentsBlueApp
-                : .labelsVibrant2
-            )
+                .foregroundStyle(.accentsBlueApp)
 
 
         case .image(let name):
@@ -158,8 +153,8 @@ struct SelectionCard: View {
                 .resizable()
                 .scaledToFit()
                 .frame(
-                    width: 45,
-                    height: 45
+                    width: 50,
+                    height: 50
                 )
 
 
@@ -207,9 +202,7 @@ struct SelectionCard: View {
                     weight: .semibold
                 )
             )
-            .foregroundStyle(
-                .accentsBlueApp
-            )
+            .foregroundStyle(.accentsBlueApp)
         }
     }
 }
