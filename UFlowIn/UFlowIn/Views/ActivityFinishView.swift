@@ -74,3 +74,6 @@ struct ActivityFinishView: View {
         }
     }
 }
+#Preview{
+    ActivityFinishView()
+}

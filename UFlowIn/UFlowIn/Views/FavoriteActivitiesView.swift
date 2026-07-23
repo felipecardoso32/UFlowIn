@@ -69,7 +69,8 @@ struct FavoriteActivitiesView: View {
             }
 
             PrimaryButton(
-                title: "Continuar"
+                title: "Continuar",
+                style: .tertiary
             ) {
 
                 onContinue()
@@ -77,4 +78,9 @@ struct FavoriteActivitiesView: View {
         }
         .padding(24)
     }
+}
+#Preview{
+    FavoriteActivitiesView(  onContinue: {
+        print("Continuar pressionado")
+    })
 }

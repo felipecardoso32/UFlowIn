@@ -238,3 +238,6 @@ struct ActivityCard: View {
         )
     }
 }
+#Preview{
+    ActivitiesView()
+}

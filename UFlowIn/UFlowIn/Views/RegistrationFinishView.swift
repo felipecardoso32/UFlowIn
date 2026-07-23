@@ -34,7 +34,8 @@ struct RegistrationFinishView: View {
             Spacer()
 
             PrimaryButton(
-                title: "Começar"
+                title: "Começar",
+                style: .tertiary
             ) {
 
                 appState.finishRegistration()

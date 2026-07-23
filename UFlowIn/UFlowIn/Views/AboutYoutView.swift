@@ -111,7 +111,8 @@ struct AboutYouView: View {
                 }
 
                 PrimaryButton(
-                    title: "Continuar"
+                    title: "Continuar",
+                    style: .tertiary
                 ) {
 
                     onContinue()
@@ -120,4 +121,11 @@ struct AboutYouView: View {
             .padding(24)
         }
     }
+}
+#Preview{
+    AboutYouView(
+        onContinue: {
+                   print("Continuar pressionado")
+               }
+    )
 }

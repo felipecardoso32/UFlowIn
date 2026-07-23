@@ -29,7 +29,7 @@ struct SocialButton: View {
 
                     Image(systemName: icon)
                         .font(.title3)
-                        .foregroundColor(.labelsVibrant4)
+                        .foregroundColor(.labelsWhite)
 
                 } else {
 
@@ -40,7 +40,7 @@ struct SocialButton: View {
 
                 Text(title)
                     .font(.system(size: 17, weight: .semibold, design: .default))
-                    .foregroundColor(.labelsVibrant4)
+                    .foregroundColor(.labelsWhite)
             }
             .foregroundStyle(.primary)
             .frame(width: 300)

@@ -66,7 +66,8 @@ struct GoalsView: View {
             }
 
             PrimaryButton(
-                title: "Continuar"
+                title: "Continuar",
+                style: .tertiary
             ) {
 
                 onContinue()
@@ -75,4 +76,8 @@ struct GoalsView: View {
         .padding(24)
     }
 }
-
+#Preview{
+    GoalsView(  onContinue: {
+        print("Continuar pressionado")
+    })
+}

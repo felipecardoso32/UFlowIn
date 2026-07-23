@@ -11,54 +11,95 @@ struct RegistrationFlowView: View {
 
     @State private var currentPage = 0
 
+    private let totalPages = 5
+
     var body: some View {
 
-        Group {
+        VStack {
 
-            switch currentPage {
+        
 
-            case 0:
+            Group {
 
-                PermissionsView {
+                switch currentPage {
 
-                    currentPage += 1
+                case 0:
+
+                    PermissionsView {
+
+                        withAnimation {
+
+                            currentPage += 1
+                        }
+                    }
+
+
+                case 1:
+
+                    AboutYouView {
+
+                        withAnimation {
+
+                            currentPage += 1
+                        }
+                    }
+
+
+                case 2:
+
+                    GoalsView {
+
+                        withAnimation {
+
+                            currentPage += 1
+                        }
+                    }
+
+
+                case 3:
+
+                    ActivityLevelView {
+
+                        withAnimation {
+
+                            currentPage += 1
+                        }
+                    }
+
+
+                case 4:
+
+                    FavoriteActivitiesView {
+
+                        withAnimation {
+
+                            currentPage += 1
+                        }
+                    }
+
+
+                default:
+
+                    RegistrationFinishView()
                 }
+            }
 
-            case 1:
 
-                AboutYouView {
+            // MARK: - Progress Dots
 
-                    currentPage += 1
-                }
+            if currentPage < totalPages {
 
-            case 2:
-
-                GoalsView {
-
-                    currentPage += 1
-                }
-
-            case 3:
-
-                ActivityLevelView {
-
-                    currentPage += 1
-                }
-
-            case 4:
-
-                FavoriteActivitiesView {
-
-                    currentPage += 1
-                }
-
-            default:
-
-                RegistrationFinishView()
+                ProgressDots(
+                    currentPage: currentPage,
+                    totalPages: totalPages
+                )
+                .padding(.bottom, 20)
             }
         }
     }
 }
+
+
 #Preview {
 
     RegistrationFlowView()

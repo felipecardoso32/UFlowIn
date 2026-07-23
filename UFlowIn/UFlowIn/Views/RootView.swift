@@ -25,7 +25,7 @@ struct RootView: View {
 
             } else if !appState.loggedIn {
 
-                WelcomeView()
+                LoginView()
 
             } else if !appState.registrationFinished {
 

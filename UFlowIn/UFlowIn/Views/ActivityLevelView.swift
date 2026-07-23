@@ -78,7 +78,8 @@ struct ActivityLevelView: View {
             }
 
             PrimaryButton(
-                title: "Continuar"
+                title: "Continuar",
+                style: .tertiary
             ) {
 
                 onContinue()
@@ -86,4 +87,9 @@ struct ActivityLevelView: View {
         }
         .padding(24)
     }
+}
+#Preview {
+    ActivityLevelView(  onContinue: {
+        print("Continuar pressionado")
+    })
 }

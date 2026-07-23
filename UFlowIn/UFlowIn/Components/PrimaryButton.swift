@@ -5,7 +5,7 @@ struct PrimaryButton: View {
     enum Style {
         case `default`
         case secondary
-        case destructive
+        case tertiary
     }
 
     let title: String
@@ -43,7 +43,7 @@ struct PrimaryButton: View {
         case .secondary:
             return 30
             
-        case .destructive:
+        case .tertiary:
             return 30
             
             
@@ -58,8 +58,8 @@ struct PrimaryButton: View {
         case .secondary:
             return 44
 
-        case .destructive:
-            return 20
+        case .tertiary:
+            return 44
         }
     }
     
@@ -72,8 +72,8 @@ struct PrimaryButton: View {
         case .secondary:
             return 200
 
-        case .destructive:
-            return 20
+        case .tertiary:
+            return 200
         }
     }
     // Cor do texto
@@ -83,12 +83,12 @@ struct PrimaryButton: View {
         switch style {
 
         case .default:
-            return .labelsBlack
+            return .white
 
         case .secondary:
             return .white
 
-        case .destructive:
+        case .tertiary:
             return .white
         }
     }
@@ -125,16 +125,16 @@ struct PrimaryButton: View {
                     )
                 )
 
-        case .destructive:
+        case .tertiary:
 
-            LinearGradient(
-                colors: [
-                    .red,
-                    .orange
-                ],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
+            Color.colorsIndigo // botao verde
+                .frame(width: 200)
+                .frame(height: 44)
+                .clipShape(
+                    RoundedRectangle(
+                        cornerRadius: cornerButton
+                    )
+                )
         }
     }
 }

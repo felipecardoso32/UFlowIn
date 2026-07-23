@@ -34,7 +34,8 @@ struct PermissionsView: View {
             Spacer()
 
             PrimaryButton(
-                title: "Continuar"
+                title: "Próximo",
+                style: .tertiary
             ) {
 
                 onContinue()
@@ -43,4 +44,10 @@ struct PermissionsView: View {
         .padding(24)
     }
 }
-
+#Preview{
+    PermissionsView(
+        onContinue: {
+                   print("Continuar pressionado")
+               }
+    )
+}
