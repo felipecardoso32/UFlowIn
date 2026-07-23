@@ -12,36 +12,100 @@ struct PermissionsView: View {
     var onContinue: () -> Void
 
     var body: some View {
-
-        VStack(spacing: 30) {
-
-            Spacer()
-
-            Image(systemName: "heart.text.square.fill")
-                .font(.system(size: 80))
-                .foregroundStyle(.red)
-
-            Text("Conecte-se ao Apple Health")
-                .font(.title.bold())
+        
+        ZStack{
+            Color(.grayBackground)
+                .ignoresSafeArea()
+            
+            VStack(alignment: .center, spacing: 30) {
+                
+                Spacer()
+                
+                Text("Conecte seu Apple Health")
+                    .font(.title.bold())
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.colorsIndigo)
+                
+                Text(
+                    "Vamos conectar seu dispositivo?"
+                )
+                .font(.default.bold())
+                .foregroundStyle(.labelsBlack)
                 .multilineTextAlignment(.center)
-
-            Text(
-                "Permita que o UFlowIn acompanhe seus dados de atividade e progresso."
-            )
-            .multilineTextAlignment(.center)
-            .foregroundStyle(.secondary)
-
-            Spacer()
-
-            PrimaryButton(
-                title: "Próximo",
-                style: .tertiary
-            ) {
-
-                onContinue()
-            }
-        }
-        .padding(24)
+                
+                // Footnote/Regular
+                Text("Permita o acesso aos recursos do seu dispositivo para acompanhar suas atividades e personalizar sua experiência.")
+                    .font(Font.custom("SF Pro", size: 15))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.labelsVibrant1)
+                //.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                /* Text(
+                 "Permita o acesso aos recursos do seu dispositivo para acompanhar suas atividades e personalizar sua experiência."
+                 )
+                 .font(.default.bold())
+                 .foregroundStyle(.labelsVibrant2)
+                 .multilineTextAlignment(.center)
+                 */
+                
+               
+                
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack{
+                        Image(systemName: "heart.fill")
+                            .font(.system(size: 60))
+                            .foregroundStyle(.red)
+                            .multilineTextAlignment(.center)
+                            .padding(.top, -25)
+                        
+                        
+                        VStack{
+                            Text("Apple Health")
+                                .font(.default.bold())
+                                .font(
+                                    Font.custom("SF Pro", size: 16)
+                                    
+                                )
+                                .foregroundColor(.labelsBlack)
+                                .frame(width: 230, alignment: .leading)
+                              //  .padding(10)
+                               // .padding(.top, 2)
+                            
+                            Text("Sincronize passos, calorias, atividades e sono automaticamente.")
+                               .font(.custom("SF Pro", size: 15))
+                              .foregroundColor(.labelsVibrant2)
+                              .frame(width: 250,height: 100, alignment: .leading)
+                              .padding(10)
+                              .padding(.top, -45)
+                            
+                             
+                        }
+                        
+                    }
+                    
+                }
+                .padding(15)
+                .frame(width: 361, height: 100, alignment: .topLeading)
+                .background(.grayElement.opacity(0.7))
+                .cornerRadius(16)
+                .shadow(color: .black.opacity(0.12), radius: 20, x: 0, y: 8)
+                
+                Text("Você poderá alterar essas permissões sempre que desejar nas configurações do seu app")
+                  .font(Font.custom("SF Pro", size: 12))
+                  .foregroundColor(.labelsVibrant2)
+                  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                  .padding(.top, -200)
+                Spacer()
+                
+                PrimaryButton(
+                    title: "Próximo",
+                    style: .tertiary
+                ) {
+                    
+                    onContinue()
+                }
+            }// fim do v stack
+            .padding(40)
+        }// fim do z stack
     }
 }
 #Preview{

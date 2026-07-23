@@ -9,75 +9,203 @@ import SwiftUI
 
 struct GoalsView: View {
 
+    // MARK: - Navegação
+
     var onContinue: () -> Void
+
+
+    // MARK: - Visual do objetivo
+
+    enum GoalVisual {
+
+        // SF Symbol
+        case icon(String)
+
+        // Imagem adicionada no Assets.xcassets
+        case image(String)
+    }
+
+
+    // MARK: - Modelo do objetivo
+
+    struct Goal: Identifiable {
+
+        let id = UUID()
+
+        let title: String
+
+        let visual: GoalVisual
+    }
+
+
+    // MARK: - Estado
 
     @State private var selected: Set<String> = []
 
-    let goals = [
 
-        "Perder peso",
-        "Ganhar massa muscular",
-        "Melhorar condicionamento",
-        "Criar uma rotina saudável",
-        "Aumentar minha força"
+    // MARK: - Objetivos
+
+    let goals: [Goal] = [
+
+        Goal(
+            title: "Manter uma rotina ativa",
+            visual: .icon("figure.walk")
+        ),
+
+        Goal(
+            title: "Melhorar condicionamento",
+            visual: .icon("heart.fill")
+        ),
+
+        Goal(
+            title: "Criar hábitos saudáveis",
+            visual: .icon("figure.mind.and.body")
+        ),
+
+        Goal(
+            title: "Melhorar mobilidade e flexibilidade",
+            visual: .icon("figure.flexibility")
+        ),
+
+        Goal(
+            title: "Perder peso",
+            visual: .icon("figure.walk.treadmill")
+        ),
+
+        Goal(
+            title: "Ganhar massa muscular",
+            visual: .icon(
+                "figure.strengthtraining.traditional"
+            )
+        )
     ]
+
+
+    // MARK: - Body
 
     var body: some View {
 
-        VStack(
-            alignment: .leading,
-            spacing: 20
-        ) {
+        ZStack {
 
-            Text("Objetivos")
-                .font(.largeTitle.bold())
+            Color(.grayBackground)
+                .ignoresSafeArea()
 
-            Text(
-                "O que você deseja alcançar?"
-            )
-            .foregroundStyle(.secondary)
 
-            ScrollView {
+            VStack(
+                alignment: .center,
+                spacing: 20
+            ) {
 
-                VStack(spacing: 12) {
+                // MARK: - Título
 
-                    ForEach(
-                        goals,
-                        id: \.self
-                    ) { goal in
+                Text("Objetivos")
+                    .font(.largeTitle.bold())
 
-                        SelectionCard(
-                            title: goal,
-                            subtitle: nil,
-                            isSelected: selected.contains(goal)
-                        ) {
 
-                            if selected.contains(goal) {
+                // MARK: - Subtítulo
 
-                                selected.remove(goal)
+                Text(
+                    "O que você deseja alcançar?"
+                )
+                .foregroundStyle(.secondary)
 
-                            } else {
 
-                                selected.insert(goal)
+                // MARK: - Cards
+
+                ScrollView {
+
+                    VStack(spacing: 12) {
+
+                        ForEach(goals) { goal in
+
+                            SelectionCard(
+
+                                title: goal.title,
+
+                                subtitle: nil,
+
+                                visual: convertVisual(
+                                    goal.visual
+                                ),
+
+                                style: .icon,
+
+                                isSelected:
+                                    selected.contains(
+                                        goal.title
+                                    )
+
+                            ) {
+
+                                toggleSelection(
+                                    goal.title
+                                )
                             }
                         }
                     }
                 }
-            }
 
-            PrimaryButton(
-                title: "Continuar",
-                style: .tertiary
-            ) {
 
-                onContinue()
+                // MARK: - Botão continuar
+
+                PrimaryButton(
+                    title: "Continuar",
+                    style: .tertiary
+                ) {
+
+                    onContinue()
+                }
             }
+            .padding(24)
         }
-        .padding(24)
+    }
+
+
+    // MARK: - Selecionar / Desselecionar
+
+    private func toggleSelection(
+        _ goal: String
+    ) {
+
+        if selected.contains(goal) {
+
+            selected.remove(goal)
+
+        } else {
+
+            selected.insert(goal)
+        }
+    }
+
+
+    // MARK: - Converter visual
+
+    private func convertVisual(
+        _ visual: GoalVisual
+    ) -> SelectionCard.Visual {
+
+        switch visual {
+
+        case .icon(let name):
+
+            return .icon(name)
+
+        case .image(let name):
+
+            return .image(name)
+        }
     }
 }
-#Preview{
-    GoalsView(  onContinue: {
-        print("Continuar pressionado")
-    })
+
+
+// MARK: - Preview
+
+#Preview {
+
+    GoalsView {
+
+        print(
+            "Continuar pressionado"
+        )
+    }
 }

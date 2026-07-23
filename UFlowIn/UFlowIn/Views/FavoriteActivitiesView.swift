@@ -9,78 +9,214 @@ import SwiftUI
 
 struct FavoriteActivitiesView: View {
 
+    // MARK: - Navegação
+
     var onContinue: () -> Void
+
+
+    // MARK: - Visual da atividade
+
+    enum ActivityVisual {
+
+        // SF Symbol
+        case icon(String)
+
+        // Imagem adicionada no Assets.xcassets
+        case image(String)
+    }
+
+
+    // MARK: - Modelo da atividade
+
+    struct Activity: Identifiable {
+
+        let id = UUID()
+
+        let title: String
+
+        let visual: ActivityVisual
+    }
+
+
+    // MARK: - Estado
 
     @State private var selected: Set<String> = []
 
-    let activities = [
 
-        "Pilates",
-        "Corrida",
-        "Caminhada",
-        "Calistenia",
-        "Musculação",
-        "Yoga",
-        "Ciclismo"
+    // MARK: - Atividades
+
+    let activities: [Activity] = [
+
+        Activity(
+            title: "Pilates",
+            visual: .icon("figure.mind.and.body")
+        ),
+
+        Activity(
+            title: "Corrida",
+            visual: .icon("figure.run")
+        ),
+
+        Activity(
+            title: "Caminhada",
+            visual: .icon("figure.walk")
+        ),
+
+        Activity(
+            title: "Calistenia",
+            visual: .icon(
+                "figure.strengthtraining.functional"
+            )
+        ),
+
+        Activity(
+            title: "Musculação",
+            visual: .icon(
+                "figure.strengthtraining.traditional"
+            )
+        ),
+
+        Activity(
+            title: "Yoga",
+            visual: .icon(
+                "figure.mind.and.body"
+            )
+        ),
+
+        Activity(
+            title: "Ciclismo",
+            visual: .icon(
+                "figure.outdoor.cycle"
+            )
+        )
     ]
+
+
+    // MARK: - Body
 
     var body: some View {
 
-        VStack(
-            alignment: .leading,
-            spacing: 20
-        ) {
+        ZStack {
 
-            Text("Atividades favoritas")
-                .font(.largeTitle.bold())
+            Color(.grayBackground)
+                .ignoresSafeArea()
 
-            Text(
-                "Escolha as atividades que você mais gosta."
-            )
-            .foregroundStyle(.secondary)
 
-            ScrollView {
+            VStack(
+                alignment: .leading,
+                spacing: 20
+            ) {
 
-                VStack(spacing: 12) {
+                // MARK: - Título
 
-                    ForEach(
-                        activities,
-                        id: \.self
-                    ) { activity in
+                Text("Atividades favoritas")
+                    .font(.largeTitle.bold())
 
-                        SelectionCard(
-                            title: activity,
-                            subtitle: nil,
-                            isSelected:
-                                selected.contains(activity)
-                        ) {
 
-                            if selected.contains(activity) {
+                // MARK: - Subtítulo
 
-                                selected.remove(activity)
+                Text(
+                    "Escolha as atividades que você mais gosta."
+                )
+                .foregroundStyle(.secondary)
 
-                            } else {
 
-                                selected.insert(activity)
+                // MARK: - Lista de atividades
+
+                ScrollView {
+
+                    VStack(spacing: 12) {
+
+                        ForEach(activities) { activity in
+
+                            SelectionCard(
+
+                                title: activity.title,
+
+                                subtitle: nil,
+
+                                visual: convertVisual(
+                                    activity.visual
+                                ),
+
+                                style: .icon,
+
+                                isSelected:
+                                    selected.contains(
+                                        activity.title
+                                    )
+
+                            ) {
+
+                                toggleSelection(
+                                    activity.title
+                                )
                             }
                         }
                     }
                 }
-            }
 
-            PrimaryButton(
-                title: "Continuar",
-                style: .tertiary
-            ) {
 
-                onContinue()
+                // MARK: - Botão continuar
+
+                PrimaryButton(
+                    title: "Continuar",
+                    style: .tertiary
+                ) {
+
+                    onContinue()
+                }
             }
+            .padding(24)
         }
-        .padding(24)
+    }
+
+
+    // MARK: - Selecionar / Desselecionar
+
+    private func toggleSelection(
+        _ activity: String
+    ) {
+
+        if selected.contains(activity) {
+
+            selected.remove(activity)
+
+        } else {
+
+            selected.insert(activity)
+        }
+    }
+
+
+    // MARK: - Converter visual
+
+    private func convertVisual(
+        _ visual: ActivityVisual
+    ) -> SelectionCard.Visual {
+
+        switch visual {
+
+        case .icon(let name):
+
+            return .icon(name)
+
+        case .image(let name):
+
+            return .image(name)
+        }
     }
 }
-#Preview{
-    FavoriteActivitiesView(  onContinue: {
-        print("Continuar pressionado")
-    })
+
+
+// MARK: - Preview
+
+#Preview {
+
+    FavoriteActivitiesView {
+
+        print(
+            "Continuar pressionado"
+        )
+    }
 }

@@ -4,92 +4,137 @@
 //
 //  Created by Felipe Colares Cardoso on 22/07/26.
 //
+
 import SwiftUI
 
 struct ActivityLevelView: View {
 
     var onContinue: () -> Void
 
+
+    enum ActVisual {
+
+        case icon(String)
+
+        case image(String)
+    }
+
+
+    struct ActivityLevel: Identifiable {
+
+        let id = UUID()
+
+        let title: String
+
+        let subtitle: String
+
+        let visual: ActVisual
+    }
+
+
     @State private var selected: String?
 
-    let levels = [
 
-        (
-            "Sedentário",
-            "Pouca ou nenhuma atividade física"
+    let levels: [ActivityLevel] = [
+
+        ActivityLevel(
+            title: "Sedentário",
+            subtitle: "Pouca ou nenhuma atividade física",
+            visual: .image("pose4")
         ),
 
-        (
-            "Pouco ativo",
-            "Atividade física leve"
+        ActivityLevel(
+            title: "Pouco ativo",
+            subtitle: "Atividade física leve",
+            visual: .icon("figure.walk")
         ),
 
-        (
-            "Ativo",
-            "Exercícios regularmente"
+        ActivityLevel(
+            title: "Ativo",
+            subtitle: "Exercícios regularmente",
+            visual: .icon("figure.run")
         ),
 
-        (
-            "Muito ativo",
-            "Exercícios intensos frequentemente"
+        ActivityLevel(
+            title: "Muito ativo",
+            subtitle: "Exercícios intensos frequentemente",
+            visual: .icon(
+                "figure.strengthtraining.traditional"
+            )
         ),
 
-        (
-            "Extremamente ativo",
-            "Treinos intensos diariamente"
+        ActivityLevel(
+            title: "Extremamente ativo",
+            subtitle: "Treinos intensos diariamente",
+            visual: .icon(
+                "figure.highintensity.intervaltraining"
+            )
         )
     ]
 
+
     var body: some View {
 
-        VStack(
-            alignment: .leading,
-            spacing: 20
-        ) {
-
-            Text("Nível de atividade")
-                .font(.largeTitle.bold())
-
-            Text(
-                "Escolha apenas uma opção."
-            )
-            .foregroundStyle(.secondary)
+        VStack {
 
             ScrollView {
 
                 VStack(spacing: 12) {
 
-                    ForEach(
-                        levels,
-                        id: \.0
-                    ) { level in
+                    ForEach(levels) { level in
 
                         SelectionCard(
-                            title: level.0,
-                            subtitle: level.1,
+
+                            title: level.title,
+
+                            subtitle: level.subtitle,
+
+                            visual: convertVisual(
+                                level.visual
+                            ),
+
+                            style: .icon,
+
                             isSelected:
-                                selected == level.0
+                                selected == level.title
+
                         ) {
 
-                            selected = level.0
+                            selected = level.title
                         }
                     }
                 }
             }
-
-            PrimaryButton(
-                title: "Continuar",
-                style: .tertiary
-            ) {
-
-                onContinue()
-            }
         }
-        .padding(24)
+    }
+
+
+    private func convertVisual(
+        _ visual: ActVisual
+    ) -> SelectionCard.Visual {
+
+        switch visual {
+
+        case .icon(let name):
+
+            return .icon(name)
+
+        case .image(let name):
+
+            return .image(name)
+        }
     }
 }
+
+
+// MARK: - Preview
+
 #Preview {
-    ActivityLevelView(  onContinue: {
-        print("Continuar pressionado")
-    })
+
+    ActivityLevelView {
+
+        print(
+            "Continuar pressionado"
+        )
+    }
 }
