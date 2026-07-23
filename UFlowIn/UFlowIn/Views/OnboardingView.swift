@@ -18,19 +18,19 @@ struct OnboardingView: View {
         OnboardingPage(
             title: "Sua jornada começa aqui",
             subtitle: "Crie uma rotina mais saudável e acompanhe sua evolução.",
-            imageName: "Onboarding1"
+            imageName: "pose3"
         ),
 
         OnboardingPage(
             title: "Uma aplicação que evolui com você",
             subtitle: "Tenha suas atividades, metas e progresso em um só lugar.",
-            imageName: "Onboarding2"
+            imageName: "SimbolosOnboarding2"
         ),
 
         OnboardingPage(
             title: "Evolua todos os dias",
             subtitle: "Comece agora e transforme seus hábitos.",
-            imageName: "Onboarding3"
+            imageName: "mascote trofeu"
         )
     ]
 
@@ -90,7 +90,8 @@ struct OnboardingView: View {
                 title:
                     currentPage == pages.count - 1
                     ? "Começar"
-                    : "Continuar"
+                    : "Continuar",
+                style: .secondary
             ) {
 
                 if currentPage < pages.count - 1 {

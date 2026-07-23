@@ -15,10 +15,10 @@ struct SplashScreen: View {
 
         ZStack {
 
-            Color.white
+            Color.labelsWhite
                 .ignoresSafeArea()
 
-            Image("LogoUFlowIn")
+            Image("LogoUflowIn")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 180)

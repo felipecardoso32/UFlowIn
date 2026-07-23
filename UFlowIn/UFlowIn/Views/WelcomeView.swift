@@ -22,11 +22,7 @@ struct WelcomeView: View {
 
                 Spacer()
 
-                Image("Mascote")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 220)
-
+               
                 Text("Bem-vindo!")
                     .font(.largeTitle.bold())
 
@@ -39,6 +35,7 @@ struct WelcomeView: View {
 
                 PrimaryButton(
                     title: "Login"
+                   
                 ) {
 
                     showLogin = true
@@ -61,7 +58,7 @@ struct WelcomeView: View {
 
                 SocialButton(
                     title: "Continuar com Google",
-                    icon: "G",
+                    icon: "logoGoogle",
                     isSystemIcon: false
                 ) {
 

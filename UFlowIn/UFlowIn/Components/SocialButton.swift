@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SocialButton: View {
-
+    // botao de login com a apple/google com diversas modificações programáveis
+    //  o padrão é 300 largura e 44 altura de acordo com o figma. está Infinity e 52
     let title: String
     let icon: String
     var isSystemIcon = true
@@ -23,38 +24,40 @@ struct SocialButton: View {
         } label: {
 
             HStack {
-
+                    // condicional para exibir icone da apple e icone da google
                 if isSystemIcon {
 
                     Image(systemName: icon)
                         .font(.title3)
+                        .foregroundColor(.labelsVibrant4)
 
                 } else {
 
-                    Text(icon)
-                        .font(.headline)
-                        .bold()
+                    Image(icon)
+                       // .font(.title3)
+                        //.foregroundColor(.labelsVibrant4)
                 }
 
                 Text(title)
-                    .fontWeight(.semibold)
+                    .font(.system(size: 17, weight: .semibold, design: .default))
+                    .foregroundColor(.labelsVibrant4)
             }
             .foregroundStyle(.primary)
-            .frame(maxWidth: .infinity)
-            .frame(height: 52)
-            .background(.white)
+            .frame(width: 300)
+            .frame(height: 44)
+            .background(.labelsBlack)
             .clipShape(
                 RoundedRectangle(
-                    cornerRadius: 16
+                    cornerRadius: 30
                 )
             )
             .overlay {
 
                 RoundedRectangle(
-                    cornerRadius: 16
+                    cornerRadius: 30
                 )
                 .stroke(
-                    Color.gray.opacity(0.25),
+                    .labelsBlack,
                     lineWidth: 1
                 )
             }

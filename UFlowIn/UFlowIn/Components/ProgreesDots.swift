@@ -23,8 +23,8 @@ struct ProgressDots: View {
                 Capsule()
                     .fill(
                         index == currentPage
-                        ? Color.blue
-                        : Color.gray.opacity(0.3)
+                        ? .labelsBlack
+                        : .labelsBlack.opacity(0.3)
                     )
                     .frame(
                         width: index == currentPage

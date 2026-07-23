@@ -10,7 +10,7 @@ import Combine
 
 final class AppState: ObservableObject {
 
-    // MARK: - Fluxo do aplicativo
+
 
     @Published var splashFinished: Bool = false
 
@@ -21,7 +21,7 @@ final class AppState: ObservableObject {
     @Published var registrationFinished: Bool = false
 
 
-    // MARK: - Login
+    // Login
 
     func login() {
 
@@ -29,7 +29,7 @@ final class AppState: ObservableObject {
     }
 
 
-    // MARK: - Onboarding
+    // Onboarding
 
     func finishOnboarding() {
 
@@ -37,7 +37,7 @@ final class AppState: ObservableObject {
     }
 
 
-    // MARK: - Cadastro
+    //  Cadastro
 
     func finishRegistration() {
 
